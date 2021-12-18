@@ -1,7 +1,7 @@
 {
   "swagger": "1.0.0",
   "info": {
-    "description": "前后端分离优化平台",
+    "description": "前后端分离优化客户端平台",
     "version": "1.0.0",
     "title": "接口文档",
     "contact": {
