@@ -1,15 +1,15 @@
 {
-  "swagger": "2.0",
+  "swagger": "1.0.0",
   "info": {
-    "description": "深圳竹芒科技有限公司(搜电充电)专注品牌，追求品质， 不仅专注于提升产品性能及用户体验，同时还注重保障合作伙伴的权益，为搜电合伙人提供多方位的保障，实现互利共赢。",
-    "version": "1.23.45",
-    "title": "搜电充电接口文档",
+    "description": "前后端分离优化平台",
+    "version": "1.0.0",
+    "title": "接口文档",
     "contact": {
-      "email": "liqingyun.chn@gmail.com"
+      "email": ""
     }
   },
-  "host": "api.soudian.com",
-  "basePath": "/v2",
+  "host": "www.domain.com",
+  "basePath": "/v1",
   "schemes": [
     "https",
     "http"
@@ -17,19 +17,7 @@
   "tags": [
     {
       "name": "基础",
-      "description": "系统公共接口"
-    },
-    {
-      "name": "官网",
-      "description": "集团官网"
-    },
-    {
-      "name": "商城",
-      "description": "在线商城及小程序"
-    },
-    {
-      "name": "公众号",
-      "description": "微信公众号"
+      "description": "多系统公共"
     }
   ],
   "paths": {
@@ -39,21 +27,21 @@
           "基础"
         ],
         "summary": "登录账号",
-        "description": "登录账号，可以登录集团官网、商城、公众号和微信小程序",
+        "description": "登录账号，只能使用手机验证码登录",
         "parameters": [
           {
-            "name": "userName",
+            "name": "phone",
             "type": "string",
             "in": "query",
             "required": true,
-            "description": "用户名称"
+            "description": "手机号码"
           },
           {
-            "name": "password",
+            "name": "code",
             "type": "string",
             "in": "query",
             "required": true,
-            "description": "用户密码"
+            "description": "验证码"
           }
         ],
         "responses": {
@@ -128,67 +116,13 @@
         ]
       }
     },
-    "/user": {
-      "post": {
-        "tags": [
-          "基础"
-        ],
-        "summary": "创建用户",
-        "description": "创建的用户的基本信息，包含用户商城模块数据",
-        "parameters": [
-          {
-            "name": "userName",
-            "type": "string",
-            "in": "query",
-            "required": true,
-            "description": "用户名称"
-          },
-          {
-            "name": "password",
-            "type": "string",
-            "in": "query",
-            "required": true,
-            "description": "用户密码"
-          },
-          {
-            "name": "realName",
-            "type": "string",
-            "in": "query",
-            "required": true,
-            "description": "真实姓名"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "创建成功",
-            "schema": {
-              "$ref": "#/definitions/user"
-            }
-          },
-          "400": {
-            "description": "参数无效",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          }
-        },
-        "security": [
-          {
-            "petstore_auth": [
-              "write:token",
-              "read:token"
-            ]
-          }
-        ]
-      }
-    },
     "/user/{userId}": {
       "get": {
         "tags": [
           "基础"
         ],
-        "summary": "获取用户",
-        "description": "获取的用户的基本信息，包含用户商城模块数据",
+        "summary": "获取用户信息",
+        "description": "获取的用户的基本信息",
         "parameters": [
           {
             "name": "userId",
@@ -227,298 +161,6 @@
             ]
           }
         ]
-      },
-      "put": {
-        "tags": [
-          "基础"
-        ],
-        "summary": "修改用户",
-        "description": "修改的用户的基本信息",
-        "parameters": [
-          {
-            "name": "userId",
-            "type": "integer",
-            "format": "int32",
-            "in": "path",
-            "required": true,
-            "description": "用户ID"
-          },
-          {
-            "name": "userName",
-            "type": "string",
-            "in": "query",
-            "description": "用户名称"
-          },
-          {
-            "name": "realName",
-            "type": "string",
-            "in": "query",
-            "description": "真实姓名"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "修改用户信息成功",
-            "schema": {
-              "$ref": "#/definitions/user"
-            }
-          },
-          "400": {
-            "description": "参数无效",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          },
-          "404": {
-            "description": "用户不存在",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          }
-        },
-        "security": [
-          {
-            "petstore_auth": [
-              "write:token",
-              "read:token"
-            ]
-          }
-        ]
-      },
-      "delete": {
-        "tags": [
-          "基础"
-        ],
-        "summary": "删除用户",
-        "description": "删除用户的基本信息",
-        "parameters": [
-          {
-            "name": "userId",
-            "type": "integer",
-            "format": "int32",
-            "in": "path",
-            "required": true,
-            "description": "用户ID"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "删除用户信息成功"
-          },
-          "400": {
-            "description": "参数无效",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          },
-          "404": {
-            "description": "用户不存在",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          }
-        },
-        "security": [
-          {
-            "petstore_auth": [
-              "write:token",
-              "read:token"
-            ]
-          }
-        ]
-      },
-      "patch": {
-        "tags": [
-          "基础"
-        ],
-        "summary": "修改用户密码",
-        "description": "修改的用户的密码信息",
-        "parameters": [
-          {
-            "name": "userId",
-            "type": "integer",
-            "format": "int32",
-            "in": "path",
-            "required": true,
-            "description": "用户ID"
-          },
-          {
-            "name": "password",
-            "type": "string",
-            "in": "query",
-            "required": true,
-            "description": "新密码"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "修改用户信息成功"
-          },
-          "400": {
-            "description": "参数无效",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          },
-          "404": {
-            "description": "用户不存在",
-            "schema": {
-              "$ref": "#/definitions/error"
-            }
-          }
-        },
-        "security": [
-          {
-            "petstore_auth": [
-              "write:token",
-              "read:token"
-            ]
-          }
-        ]
-      }
-    },
-    "/case/list": {
-      "get": {
-        "tags": [
-          "官网",
-          "公众号"
-        ],
-        "summary": "案例列表",
-        "description": "获取案例列表数据",
-        "parameters": [
-          {
-            "name": "cid",
-            "type": "integer",
-            "format": "int32",
-            "in": "query",
-            "description": "分类ID"
-          },
-          {
-            "name": "pager",
-            "type": "integer",
-            "format": "int32",
-            "in": "query",
-            "description": "页码"
-          },
-          {
-            "name": "per",
-            "type": "integer",
-            "format": "int32",
-            "in": "query",
-            "description": "每页数据量"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "获取数据成功",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/case"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/case/detail/{id}": {
-      "get": {
-        "tags": [
-          "官网",
-          "公众号"
-        ],
-        "summary": "案例详情",
-        "description": "获取案例详情数据",
-        "parameters": [
-          {
-            "name": "id",
-            "type": "integer",
-            "format": "int32",
-            "in": "path",
-            "required": true,
-            "description": "ID"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "获取数据成功",
-            "schema": {
-              "$ref": "#/definitions/case"
-            }
-          }
-        }
-      }
-    },
-    "/product/list": {
-      "get": {
-        "tags": [
-          "商城",
-          "公众号"
-        ],
-        "summary": "商品列表",
-        "description": "获取商品列表数据",
-        "parameters": [
-          {
-            "name": "cid",
-            "type": "integer",
-            "format": "int32",
-            "in": "query",
-            "description": "分类ID"
-          },
-          {
-            "name": "pager",
-            "type": "integer",
-            "format": "int32",
-            "in": "query",
-            "description": "页码"
-          },
-          {
-            "name": "per",
-            "type": "integer",
-            "format": "int32",
-            "in": "query",
-            "description": "每页数据量"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "获取数据成功",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/product"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/product/detail/{id}": {
-      "get": {
-        "tags": [
-          "商城",
-          "公众号"
-        ],
-        "summary": "产品详情",
-        "description": "获取产品详情数据",
-        "parameters": [
-          {
-            "name": "id",
-            "type": "integer",
-            "format": "int32",
-            "in": "path",
-            "required": true,
-            "description": "ID"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "获取数据成功",
-            "schema": {
-              "$ref": "#/definitions/product"
-            }
-          }
-        }
       }
     }
   },
@@ -546,6 +188,10 @@
           "type": "string",
           "description": "用户名称"
         },
+        "nickName": {
+          "type": "string",
+          "description": "用户昵称"
+        },
         "realName": {
           "type": "string",
           "description": "真实姓名"
@@ -561,88 +207,21 @@
           },
           "description": "用户权限组"
         },
+        "phone": {
+          "type": "string",
+          "description": "手机号码"
+        },
+        "theme": {
+          "type": "string",
+          "description": "横/竖版 default or horizontal"
+        },
+        "colour": {
+          "type": "string",
+          "description": "颜色主题 blue , orange , coffee, red, green"
+        },
         "createTime": {
           "type": "string",
           "description": "注册时间"
-        }
-      }
-    },
-    "case": {
-      "description": "案例模型",
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32",
-          "description": "ID"
-        },
-        "title": {
-          "type": "string",
-          "description": "标题"
-        },
-        "summary": {
-          "type": "string",
-          "description": "描述"
-        },
-        "image": {
-          "type": "string",
-          "description": "缩略图"
-        },
-        "createTime": {
-          "type": "string",
-          "description": "创建时间"
-        },
-        "hit": {
-          "type": "integer",
-          "format": "int32",
-          "description": "点击量"
-        }
-      }
-    },
-    "product": {
-      "description": "商品模型",
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int32",
-          "description": "ID"
-        },
-        "title": {
-          "type": "string",
-          "description": "标题"
-        },
-        "summary": {
-          "type": "string",
-          "description": "描述"
-        },
-        "image": {
-          "type": "string",
-          "description": "缩略图"
-        },
-        "createTime": {
-          "type": "string",
-          "description": "创建时间"
-        },
-        "fee": {
-          "type": "integer",
-          "format": "int32",
-          "description": "售卖价格"
-        },
-        "kucun": {
-          "type": "integer",
-          "format": "int32",
-          "description": "库存数量"
-        },
-        "sale": {
-          "type": "integer",
-          "format": "int32",
-          "description": "售卖数量"
-        },
-        "hit": {
-          "type": "integer",
-          "format": "int32",
-          "description": "商品热度"
         }
       }
     }
