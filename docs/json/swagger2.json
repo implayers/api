@@ -1,0 +1,568 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述",
+    "version": "1.0.0",
+    "title": "标题标题标题标题标题标题标题标题标题标题",
+    "contact": {
+      "email": "liqingyun.chn@gmail.com"
+    }
+  },
+  "host": "apis.domain.com",
+  "basePath": "/v2",
+  "schemes": [
+    "https"
+  ],
+  "tags": [
+    {
+      "name": "公共接口",
+      "description": "全系统公共接口"
+    },
+    {
+      "name": "商城",
+      "description": "商城接口"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": [
+          "公共接口"
+        ],
+        "summary": "登录",
+        "description": "登录的说明描述",
+        "parameters": [
+          {
+            "name": "userName",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户名称"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户密码"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "登录成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "Token密钥"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "用户不存在",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "公共接口"
+        ],
+        "summary": "下线",
+        "description": "踢人下线",
+        "parameters": [
+          {
+            "name": "userId",
+            "type": "integer",
+            "in": "query",
+            "required": true,
+            "description": "用户ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "踢人成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "Token密钥"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "用户不存在",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "公共接口"
+        ],
+        "summary": "登录",
+        "description": "登录的说明描述",
+        "parameters": [
+          {
+            "name": "userName",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户名称"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户密码"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "登录成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "Token密钥"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "用户不存在",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/user": {
+      "post": {
+        "tags": [
+          "商城"
+        ],
+        "summary": "登录",
+        "description": "登录的说明描述",
+        "parameters": [
+          {
+            "name": "userName",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户名称"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户密码"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "登录成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "Token密钥"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "用户不存在",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "商城"
+        ],
+        "summary": "登录",
+        "description": "登录的说明描述",
+        "parameters": [
+          {
+            "name": "userName",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户名称"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户密码"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "登录成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "Token密钥"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "用户不存在",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "商城"
+        ],
+        "summary": "登录",
+        "description": "登录的说明描述",
+        "parameters": [
+          {
+            "name": "userName",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户名称"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户密码"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "登录成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "Token密钥"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "用户不存在",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/wxgs": {
+      "post": {
+        "tags": [
+          "商城"
+        ],
+        "summary": "登录",
+        "description": "登录的说明描述",
+        "parameters": [
+          {
+            "name": "userName",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户名称"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户密码"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "登录成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "Token密钥"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "用户不存在",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "商城"
+        ],
+        "summary": "登录",
+        "description": "登录的说明描述",
+        "parameters": [
+          {
+            "name": "userName",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户名称"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户密码"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "登录成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "Token密钥"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "用户不存在",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "商城"
+        ],
+        "summary": "登录",
+        "description": "登录的说明描述",
+        "parameters": [
+          {
+            "name": "userName",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户名称"
+          },
+          {
+            "name": "password",
+            "type": "string",
+            "in": "query",
+            "required": true,
+            "description": "用户密码"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "登录成功",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string",
+                  "description": "Token密钥"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "用户不存在",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "error": {
+      "description": "错误模型",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "状态码"
+        },
+        "message": {
+          "type": "string",
+          "description": "错误描述"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:token": "写入Toekn",
+        "read:token": "读取Token"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "access_token",
+      "in": "header"
+    }
+  },
+  "externalDocs": {
+    "description": "技术支持",
+    "url": "http://swagger.io"
+  }
+}
