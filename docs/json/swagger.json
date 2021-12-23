@@ -579,20 +579,14 @@
         ]
       }
     },
-    "/user/money/{userid}": {
+    "/user/money": {
       "post": {
         "tags": [
           "会员中心"
         ],
         "summary": "刷新金额",
         "description": "",
-        "parameters": [
-          {
-            "name": "userid",
-            "type": "string",
-            "description": "用户id"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "成功",
@@ -869,7 +863,7 @@
       }
     },
     "/withdraw": {
-      "get": {
+      "post": {
         "tags": [
           "会员中心"
         ],
