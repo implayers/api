@@ -99,16 +99,7 @@
         ],
         "summary": "退出账号",
         "description": "登出账号",
-        "parameters": [
-          {
-            "name": "userId",
-            "type": "integer",
-            "format": "int32",
-            "in": "query",
-            "required": true,
-            "description": "用户ID"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "退出成功"
@@ -136,23 +127,14 @@
         ]
       }
     },
-    "/user/{userId}": {
+    "/user/": {
       "get": {
         "tags": [
           "基础"
         ],
         "summary": "用户信息",
         "description": "用户的基本信息",
-        "parameters": [
-          {
-            "name": "userId",
-            "type": "integer",
-            "format": "int32",
-            "in": "path",
-            "required": true,
-            "description": "用户ID"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "获取用户信息成功",
@@ -243,7 +225,7 @@
             "name": "id",
             "type": "integer",
             "format": "int32",
-            "description": "ID"
+            "description": "id"
           }
         ],
         "responses": {
