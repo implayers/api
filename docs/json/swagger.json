@@ -17,7 +17,27 @@
   "tags": [
     {
       "name": "基础",
-      "description": "多系统公共"
+      "description": ""
+    },
+    {
+      "name": "优惠资讯",
+      "description": ""
+    },
+    {
+      "name": "会员中心",
+      "description": ""
+    },
+    {
+      "name": "代理商户",
+      "description": ""
+    },
+    {
+      "name": "其他功能",
+      "description": ""
+    },
+    {
+      "name": "在线客服",
+      "description": "延期"
     }
   ],
   "paths": {
@@ -121,8 +141,8 @@
         "tags": [
           "基础"
         ],
-        "summary": "获取用户信息",
-        "description": "获取的用户的基本信息",
+        "summary": "用户信息",
+        "description": "用户的基本信息",
         "parameters": [
           {
             "name": "userId",
@@ -162,9 +182,818 @@
           }
         ]
       }
+    },
+    "/coupon/list": {
+      "get": {
+        "tags": [
+          "优惠资讯"
+        ],
+        "summary": "优惠资讯列表",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "description": "当前页码"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/coupon"
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/coupon/detail/{id}": {
+      "get": {
+        "tags": [
+          "优惠资讯"
+        ],
+        "summary": "优惠资讯详情",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "description": "ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/coupon"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/transaction/list": {
+      "get": {
+        "tags": [
+          "会员中心"
+        ],
+        "summary": "交易记录",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "description": "页码"
+          },
+          {
+            "name": "type",
+            "type": "integer",
+            "format": "int32",
+            "description": "类型"
+          },
+          {
+            "name": "time",
+            "type": "integer",
+            "format": "int32",
+            "description": "时间"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/transaction"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/trade/list": {
+      "get": {
+        "tags": [
+          "会员中心"
+        ],
+        "summary": "投注记录",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "description": "页码"
+          },
+          {
+            "name": "game",
+            "type": "integer",
+            "format": "int32",
+            "description": "所属游戏"
+          },
+          {
+            "name": "type",
+            "type": "integer",
+            "format": "int32",
+            "description": "类型"
+          },
+          {
+            "name": "time",
+            "type": "integer",
+            "format": "int32",
+            "description": "时间"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/trade"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/sms/list": {
+      "get": {
+        "tags": [
+          "其他功能"
+        ],
+        "summary": "站内短信列表",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "description": "当前页码"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/sms"
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/sms/detail/{id}": {
+      "get": {
+        "tags": [
+          "其他功能"
+        ],
+        "summary": "站内短信详情",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "description": "ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/sms"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/sms/add": {
+      "post": {
+        "tags": [
+          "其他功能"
+        ],
+        "summary": "发送站内短信",
+        "description": "",
+        "parameters": [
+          {
+            "name": "content",
+            "type": "string",
+            "description": "短信内容"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/success"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/profile/edit": {
+      "put": {
+        "tags": [
+          "会员中心"
+        ],
+        "summary": "会员资料",
+        "description": "",
+        "parameters": [
+          {
+            "name": "nickName",
+            "type": "string",
+            "description": "用户名称"
+          },
+          {
+            "name": "realName",
+            "type": "string",
+            "description": "真实姓名"
+          },
+          {
+            "name": "identityCard",
+            "type": "string",
+            "description": "身份证"
+          },
+          {
+            "name": "mobile",
+            "type": "string",
+            "description": "手机号码"
+          },
+          {
+            "name": "qq",
+            "type": "string",
+            "description": "QQ号码"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/success"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/user/money/{userid}": {
+      "post": {
+        "tags": [
+          "会员中心"
+        ],
+        "summary": "刷新金额",
+        "description": "",
+        "parameters": [
+          {
+            "name": "userid",
+            "type": "string",
+            "description": "用户id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/success"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/tutorial/list": {
+      "get": {
+        "tags": [
+          "其他功能"
+        ],
+        "summary": "玩法介绍列表",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "description": "当前页码"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tutorial"
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/tutorial/detail/{id}": {
+      "get": {
+        "tags": [
+          "其他功能"
+        ],
+        "summary": "玩法介绍详情",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "integer",
+            "format": "int32",
+            "description": "ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/tutorial"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/agency/": {
+      "get": {
+        "tags": [
+          "代理商户"
+        ],
+        "summary": "代理商数据",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/agency"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/agency/url": {
+      "get": {
+        "tags": [
+          "代理商户"
+        ],
+        "summary": "推广地址",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/agencyUrl"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/agency/member": {
+      "get": {
+        "tags": [
+          "代理商户"
+        ],
+        "summary": "成员管理",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/agencyMember"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/agency/extension": {
+      "get": {
+        "tags": [
+          "代理商户"
+        ],
+        "summary": "推广数据",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/agencyExtension"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/withdraw": {
+      "get": {
+        "tags": [
+          "会员中心"
+        ],
+        "summary": "提现",
+        "description": "",
+        "parameters": [
+          {
+            "name": "cid",
+            "type": "integer",
+            "format": "int32",
+            "description": "卡片id"
+          },
+          {
+            "name": "money",
+            "type": "integer",
+            "format": "int32",
+            "description": "提现金额"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/success"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/withdraw/list": {
+      "get": {
+        "tags": [
+          "会员中心"
+        ],
+        "summary": "提现记录",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "description": "页码"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/withdraw"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
     }
   },
   "definitions": {
+    "success": {
+      "description": "成功模型",
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "成功描述"
+        }
+      }
+    },
     "error": {
       "description": "错误模型",
       "type": "object",
@@ -219,9 +1048,315 @@
           "type": "string",
           "description": "颜色主题 blue , orange , coffee, red, green"
         },
-        "createTime": {
+        "addTime": {
           "type": "string",
           "description": "注册时间"
+        },
+        "loginTime": {
+          "type": "string",
+          "description": "上次登录时间"
+        },
+        "money": {
+          "type": "integer",
+          "format": "int32",
+          "description": "账户余额"
+        }
+      }
+    },
+    "coupon": {
+      "description": "优惠资讯",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "ID"
+        },
+        "title": {
+          "type": "string",
+          "description": "标题"
+        },
+        "summary": {
+          "type": "string",
+          "description": "描述"
+        },
+        "content": {
+          "type": "string",
+          "description": "内容"
+        },
+        "addTime": {
+          "type": "string",
+          "description": "添加时间"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序号"
+        }
+      }
+    },
+    "transaction": {
+      "description": "交易记录",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "ID"
+        },
+        "type": {
+          "type": "string",
+          "description": "类型"
+        },
+        "addTime": {
+          "type": "string",
+          "description": "时间"
+        },
+        "money": {
+          "type": "string",
+          "description": "金额"
+        }
+      }
+    },
+    "trade": {
+      "description": "投注记录",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "ID"
+        },
+        "game": {
+          "type": "string",
+          "description": "游戏"
+        },
+        "type": {
+          "type": "string",
+          "description": "类型"
+        },
+        "addTime": {
+          "type": "string",
+          "description": "时间"
+        },
+        "money": {
+          "type": "string",
+          "description": "金额"
+        }
+      }
+    },
+    "withdraw": {
+      "description": "提现记录",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "ID"
+        },
+        "type": {
+          "type": "string",
+          "description": "类型"
+        },
+        "addTime": {
+          "type": "string",
+          "description": "时间"
+        },
+        "money": {
+          "type": "string",
+          "description": "金额"
+        }
+      }
+    },
+    "sms": {
+      "description": "站内短信",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "ID"
+        },
+        "title": {
+          "type": "string",
+          "description": "标题"
+        },
+        "content": {
+          "type": "string",
+          "description": "内容"
+        },
+        "addTime": {
+          "type": "string",
+          "description": "添加时间"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序号"
+        }
+      }
+    },
+    "tutorial": {
+      "description": "玩法介绍",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "ID"
+        },
+        "title": {
+          "type": "string",
+          "description": "标题"
+        },
+        "content": {
+          "type": "string",
+          "description": "内容"
+        },
+        "addTime": {
+          "type": "string",
+          "description": "添加时间"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序号"
+        }
+      }
+    },
+    "agency": {
+      "description": "代理商户",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "成员类型"
+        },
+        "peopleTotal": {
+          "type": "string",
+          "description": "总人数"
+        },
+        "rechargeTotal": {
+          "type": "string",
+          "description": "总充值量"
+        },
+        "withdrawalTotal": {
+          "type": "string",
+          "description": "总提款"
+        },
+        "rebateTotal": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总返点"
+        },
+        "transactionToatal": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总交易量"
+        },
+        "transactionToday": {
+          "type": "integer",
+          "format": "int32",
+          "description": "日交易量"
+        },
+        "profitToday": {
+          "type": "integer",
+          "format": "int32",
+          "description": "今日盈利"
+        },
+        "profitMonth": {
+          "type": "integer",
+          "format": "int32",
+          "description": "当月盈利"
+        }
+      }
+    },
+    "agencyUrl": {
+      "description": "推广地址",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "推广id"
+        }
+      }
+    },
+    "agencyMember": {
+      "description": "成员管理",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "id"
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "consumption": {
+          "type": "integer",
+          "format": "int32",
+          "description": "今日消费"
+        },
+        "recharge": {
+          "type": "integer",
+          "format": "int32",
+          "description": "今日充值"
+        },
+        "withdrawal": {
+          "type": "integer",
+          "format": "int32",
+          "description": "今日提现"
+        }
+      }
+    },
+    "agencyExtension": {
+      "description": "推广数据",
+      "type": "object",
+      "properties": {
+        "transactionToatal": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总交易量"
+        },
+        "rebateToday": {
+          "type": "integer",
+          "format": "int32",
+          "description": "今日返点"
+        },
+        "rebateTotal": {
+          "type": "integer",
+          "format": "int32",
+          "description": "累计返点"
+        },
+        "rechargeToday": {
+          "type": "string",
+          "description": "今日充值"
+        },
+        "withdrawalToday": {
+          "type": "string",
+          "description": "今日提款"
+        },
+        "peopleToday": {
+          "type": "integer",
+          "format": "int32",
+          "description": "今日新增"
+        },
+        "videosTotal": {
+          "type": "integer",
+          "format": "int32",
+          "description": "视讯交易量"
+        },
+        "chessTotal": {
+          "type": "integer",
+          "format": "int32",
+          "description": "棋牌交易量"
+        },
+        "lotteryTotal": {
+          "type": "integer",
+          "format": "int32",
+          "description": "彩票交易量"
         }
       }
     }
