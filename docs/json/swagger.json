@@ -36,6 +36,10 @@
       "description": ""
     },
     {
+      "name": "游戏",
+      "description": ""
+    },
+    {
       "name": "在线客服",
       "description": "延期"
     }
@@ -175,6 +179,12 @@
         "parameters": [
           {
             "name": "page",
+            "type": "integer",
+            "format": "int32",
+            "description": "当前页码"
+          },
+          {
+            "is": "isRecommend",
             "type": "integer",
             "format": "int32",
             "description": "当前页码"
@@ -1160,6 +1170,126 @@
           }
         ]
       }
+    },
+    "/ad": {
+      "get": {
+        "tags": [
+          "其他功能"
+        ],
+        "summary": "首页广告",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/ad"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/game/category": {
+      "get": {
+        "tags": [
+          "游戏"
+        ],
+        "summary": "游戏分类",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/gameCate"
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/game/list": {
+      "get": {
+        "tags": [
+          "游戏"
+        ],
+        "summary": "游戏列表",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/game"
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
     }
   },
   "definitions": {
@@ -1183,11 +1313,94 @@
         }
       }
     },
+    "ad": {
+      "description": "广告",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "id"
+        },
+        "title": {
+          "type": "string",
+          "description": "标题"
+        },
+        "imgurl": {
+          "type": "string",
+          "description": "图片地址"
+        },
+        "url": {
+          "type": "string",
+          "description": "链接"
+        }
+      }
+    },
+    "gameCate": {
+      "description": "游戏分类",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "ID"
+        },
+        "title": {
+          "type": "string",
+          "description": "标题"
+        },
+        "imgurl": {
+          "type": "string",
+          "description": "示意图"
+        },
+        "imgurl2": {
+          "type": "string",
+          "description": "示意图II"
+        },
+        "sort": {
+          "type": "string",
+          "description": "排序"
+        }
+      }
+    },
+    "game": {
+      "description": "游戏",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "ID"
+        },
+        "cid": {
+          "type": "integer",
+          "format": "int32",
+          "description": "cid"
+        },
+        "title": {
+          "type": "string",
+          "description": "标题"
+        },
+        "imgurl": {
+          "type": "string",
+          "description": "示意图"
+        },
+        "code": {
+          "type": "string",
+          "description": "游戏代码"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        }
+      }
+    },
     "user": {
       "description": "用户模型",
       "type": "object",
       "properties": {
-        "userId": {
+        "id": {
           "type": "integer",
           "format": "int32",
           "description": "用户ID"
@@ -1278,7 +1491,7 @@
         "sort": {
           "type": "integer",
           "format": "int32",
-          "description": "排序号"
+          "description": "排序"
         }
       }
     },
@@ -1379,7 +1592,7 @@
         "sort": {
           "type": "integer",
           "format": "int32",
-          "description": "排序号"
+          "description": "排序"
         }
       }
     },
@@ -1407,7 +1620,7 @@
         "sort": {
           "type": "integer",
           "format": "int32",
-          "description": "排序号"
+          "description": "排序"
         }
       }
     },
