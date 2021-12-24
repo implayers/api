@@ -957,6 +957,44 @@
           }
         ]
       }
+    },
+    "/cards/list": {
+      "get": {
+        "tags": [
+          "会员中心"
+        ],
+        "summary": "账户管理",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/card"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
     }
   },
   "definitions": {
@@ -1333,6 +1371,37 @@
           "type": "integer",
           "format": "int32",
           "description": "彩票交易量"
+        }
+      }
+    },
+    "card": {
+      "description": "账户",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "id"
+        },
+        "bankName": {
+          "type": "string",
+          "description": "开户银行、微信或支付宝"
+        },
+        "bankCode": {
+          "type": "string",
+          "description": "银行卡号、支付宝或微信账号"
+        },
+        "bankProvince": {
+          "type": "string",
+          "description": "开户银行所在省份"
+        },
+        "bankCity": {
+          "type": "string",
+          "description": "开户银行所在城市"
+        },
+        "bankNetwork": {
+          "type": "string",
+          "description": "开户支行"
         }
       }
     }
