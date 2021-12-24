@@ -970,7 +970,172 @@
           "200": {
             "description": "成功",
             "schema": {
-              "$ref": "#/definitions/card"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/card"
+              }
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/cards/add": {
+      "post": {
+        "tags": [
+          "会员中心"
+        ],
+        "summary": "添加账户",
+        "description": "",
+        "parameters": [
+          {
+            "name": "bankName",
+            "type": "string",
+            "description": "开户银行、微信或支付宝"
+          },
+          {
+            "name": "bankCode",
+            "type": "string",
+            "description": "开户银行、微信或支付宝账号"
+          },
+          {
+            "name": "bankProvince",
+            "type": "string",
+            "description": "开户银行所在省份"
+          },
+          {
+            "name": "bankCity",
+            "type": "string",
+            "description": "开户银行所在城市"
+          },
+          {
+            "name": "bankNetwork",
+            "type": "string",
+            "description": "开户行"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/success"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/cards/delete": {
+      "delete": {
+        "tags": [
+          "会员中心"
+        ],
+        "summary": "添加账户",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "账户ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/success"
+            }
+          },
+          "400": {
+            "description": "参数无效",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          },
+          "404": {
+            "description": "失败",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:token",
+              "read:token"
+            ]
+          }
+        ]
+      }
+    },
+    "/cashier/add": {
+      "post": {
+        "tags": [
+          "会员中心"
+        ],
+        "summary": "充值",
+        "description": "",
+        "parameters": [
+          {
+            "name": "payment",
+            "type": "string",
+            "description": "支付方式"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "description": "存款人姓名"
+          },
+          {
+            "name": "money",
+            "type": "string",
+            "description": "存款金额"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "$ref": "#/definitions/success"
             }
           },
           "400": {
@@ -1074,6 +1239,14 @@
           "type": "integer",
           "format": "int32",
           "description": "账户余额"
+        },
+        "birthdayCoupon": {
+          "type": "boolean",
+          "description": "生日福利"
+        },
+        "signinCoupon": {
+          "type": "boolean",
+          "description": "签到红包"
         }
       }
     },
